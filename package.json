@@ -7,6 +7,7 @@
     "prebuild": "rimraf ./bin",
     "build": "tsc --project ./tsconfig.build.json",
     "heroku-postbuild": "npm run build",
+    "start:local": "ts-node ./src/api/main.ts",
     "test": "jest"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "jest": "^27.4.7",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   },
   "dependencies": {
