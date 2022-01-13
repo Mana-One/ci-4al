@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post, UseFilters } from "@nestjs/common";
+import { Body, Controller, Get, Inject, Post, UseFilters } from "@nestjs/common";
 import { isLeft } from "fp-ts/lib/Either";
 import { USERS_REPO } from "../constants";
 import { User } from "../domain/User";
@@ -19,5 +19,10 @@ export class UserController {
             throw user.left;
         }
         this.users.save(user.right);
+    }
+
+    @Get()
+    async get() {
+        return this.users.getAll();
     }
 }
