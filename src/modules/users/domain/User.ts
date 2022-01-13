@@ -6,11 +6,12 @@ import { UserException } from "./UserException";
 
 export class User {
     private constructor(
+        readonly id: number,
         readonly firstname: string,
         readonly lastname: string
     ) {}
 
-    static create(firstname: string, lastname: string): Either<UserException, User> {
+    static create(id: number, firstname: string, lastname: string): Either<UserException, User> {
         const ap = getApplicativeValidation(getSemigroup<string>());
         const checkStr = (err: string) => (str: string): Either<NonEmptyArray<string>, string> => {
             return str.length === 0 ? left([err]) : right(str);
@@ -21,7 +22,7 @@ export class User {
                 checkStr("Invalid firstname.")(firstname),
                 checkStr("Invalid lastname.")(lastname)
             ),
-            map(args => new User(...args)),
+            map(args => new User(id, ...args)),
             mapLeft(UserException.fromMessages)
         );
     }
