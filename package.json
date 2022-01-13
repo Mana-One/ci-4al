@@ -1,6 +1,6 @@
 {
   "name": "ci-4al",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "CI exam",
   "main": "bin/api/main.js",
   "scripts": {
